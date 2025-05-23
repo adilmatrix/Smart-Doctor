@@ -1,0 +1,240 @@
+.chatbot-container {
+  display: flex;
+  flex-direction: column;
+  height: 80vh; /* Set height to 80% of viewport height */
+  max-height: 100%; /* Maximum height */
+  min-height: 100%; /* Minimum height */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative; /* For proper positioning of children */
+}
+
+.chatbot-container.dark {
+  background: #23272f;
+  color: #fff;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Add smooth scrolling */
+  scroll-behavior: smooth;
+  /* Add custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #1976d2 #f0f2f5;
+  /* Ensure proper height calculation */
+  height: calc(100% - 80px); /* Subtract input form height */
+  position: relative;
+}
+
+/* Custom scrollbar for Webkit browsers */
+.chat-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f0f2f5;
+  border-radius: 4px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #1976d2;
+  border-radius: 4px;
+}
+
+.chatbot-container.dark .chat-messages::-webkit-scrollbar-track {
+  background: #2d333b;
+}
+
+.chatbot-container.dark .chat-messages::-webkit-scrollbar-thumb {
+  background: #90caf9;
+}
+
+.welcome-message {
+  text-align: center;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
+}
+
+.chatbot-container.dark .welcome-message {
+  background: #2d333b;
+  color: #fff;
+}
+
+.welcome-message h3 {
+  margin: 0 0 12px 0;
+  color: #1976d2;
+}
+
+.chatbot-container.dark .welcome-message h3 {
+  color: #90caf9;
+}
+
+.welcome-message p {
+  margin: 8px 0;
+  color: #666;
+}
+
+.chatbot-container.dark .welcome-message p {
+  color: #bbb;
+}
+
+.message {
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin: 4px 0;
+  animation: fadeIn 0.3s ease;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: #1976d2;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.assistant {
+  align-self: flex-start;
+  background: #f0f2f5;
+  color: #333;
+  border-bottom-left-radius: 4px;
+}
+
+.chatbot-container.dark .message.assistant {
+  background: #2d333b;
+  color: #fff;
+}
+
+.message-content {
+  line-height: 1.5;
+}
+
+.chat-input-form {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.chatbot-container.dark .chat-input-form {
+  background: #2d333b;
+  border-top: 1px solid #444;
+}
+
+.chat-input-form input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.chatbot-container.dark .chat-input-form input {
+  background: #23272f;
+  border-color: #444;
+  color: #fff;
+}
+
+.chat-input-form input:focus {
+  border-color: #1976d2;
+}
+
+.chatbot-container.dark .chat-input-form input:focus {
+  border-color: #90caf9;
+}
+
+.chat-input-form button {
+  padding: 12px 24px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chatbot-container.dark .chat-input-form button {
+  background: #1565c0;
+}
+
+.chat-input-form button:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.chatbot-container.dark .chat-input-form button:hover:not(:disabled) {
+  background: #1976d2;
+}
+
+.chat-input-form button:disabled {
+  background: #90caf9;
+  cursor: not-allowed;
+}
+
+.chatbot-container.dark .chat-input-form button:disabled {
+  background: #1e3a5f;
+}
+
+/* Typing indicator */
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 8px 0;
+}
+
+.typing-indicator span {
+  width: 8px;
+  height: 8px;
+  background: #1976d2;
+  border-radius: 50%;
+  animation: typing 1s infinite ease-in-out;
+}
+
+.chatbot-container.dark .typing-indicator span {
+  background: #90caf9;
+}
+
+.typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
